@@ -7,8 +7,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     game.over(false)
 })
 let direction = 0
-let mySprite2: Sprite = null
-let mySprite3: Sprite = null
+let lionEnemy: Sprite = null
+let flamingoFood: Sprite = null
 let mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -34,7 +34,7 @@ game.onUpdate(function () {
     controller.moveSprite(mySprite, 100, 100)
 })
 game.onUpdateInterval(2000, function () {
-    mySprite3 = sprites.create(img`
+    flamingoFood = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -52,13 +52,13 @@ game.onUpdateInterval(2000, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Food)
-    mySprite3.setPosition(randint(5, 155), randint(5, 115))
+    flamingoFood.setPosition(randint(5, 155), randint(5, 115))
 })
 game.onUpdateInterval(1000, function () {
     info.changeScoreBy(1)
 })
 game.onUpdateInterval(3000, function () {
-    mySprite2 = sprites.create(img`
+    lionEnemy = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -76,11 +76,11 @@ game.onUpdateInterval(3000, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    mySprite2.setFlag(SpriteFlag.BounceOnWall, true)
+    lionEnemy.setFlag(SpriteFlag.BounceOnWall, true)
     direction = randint(1, 2)
     if (direction == 1) {
-        mySprite2.setVelocity(-5, 20)
+        lionEnemy.setVelocity(-5, 20)
     } else {
-        mySprite2.setVelocity(20, 5)
+        lionEnemy.setVelocity(20, 5)
     }
 })
